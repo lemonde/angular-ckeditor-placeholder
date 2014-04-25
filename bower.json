@@ -1,0 +1,32 @@
+{
+  "name": "angular-ckeditor-placeholder",
+  "main": "angular-ckeditor-placeholder.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/lemonde/angular-ckeditor-placeholder",
+  "authors": [
+    "Greg Bergé <neoziro@gmail.com>"
+  ],
+  "description": "Placeholder support for CKEditor angular directive.",
+  "keywords": [
+    "angular",
+    "directive",
+    "ckeditor",
+    "placeholder"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "package.json",
+    "karma.conf.js",
+    "node_modules",
+    "bower_components",
+    "Gruntfile.js",
+    "test"
+  ],
+  "devDependencies": {
+    "angular-mocks": "~1.2.16",
+    "jquery": "~2.1.0",
+    "ckeditor": "#basic/4.3.4",
+    "angular-ckeditor": "~0.1.1"
+  }
+}

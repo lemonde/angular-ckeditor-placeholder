@@ -4,6 +4,8 @@
 [![Dependency Status](https://david-dm.org/lemonde/angular-ckeditor-placeholder.svg?theme=shields.io)](https://david-dm.org/lemonde/angular-ckeditor-placeholder)
 [![devDependency Status](https://david-dm.org/lemonde/angular-ckeditor-placeholder/dev-status.svg?theme=shields.io)](https://david-dm.org/lemonde/angular-ckeditor-placeholder#info=devDependencies)
 
+Placeholder support for CKEditor angular directive.
+
 ## License
 
 MIT
