@@ -43,6 +43,8 @@
           // if data is set.
           ckeditor.instance.on('setData', function (event) {
             if (event.data.dataValue) hide();
+            // If active, plan an other show.
+            else if(isActive()) $timeout(show);
           });
 
           // Try to display placeholder.
