@@ -1,13 +1,14 @@
 var expect = chai.expect;
 
 describe('CKEditor placeholder directive', function () {
-  var $compile, $rootScope, scope;
+  var $compile, $rootScope, $timeout, scope;
 
   beforeEach(module('ckeditorPlaceholder'));
 
   beforeEach(inject(function ($injector) {
     $compile = $injector.get('$compile');
     $rootScope = $injector.get('$rootScope');
+    $timeout = $injector.get('$timeout');
     scope = $rootScope.$new();
   }));
 
@@ -18,9 +19,9 @@ describe('CKEditor placeholder directive', function () {
 
   it('should display placeholder if empty', function (done) {
     scope.onReady = function () {
+      $timeout.flush();
+      expect(element).to.contain('test');
       setTimeout(function () {
-        expect(element).to.contain('test');
-        scope.$digest();
         expect(scope.content).to.equal('');
         done();
       }, 0);
@@ -31,11 +32,12 @@ describe('CKEditor placeholder directive', function () {
 
   it('should hide placeholder when we set data', function (done) {
     scope.onReady = function () {
+      $timeout.flush();
+      expect(element).to.contain('test');
+      scope.content = 'hello';
+      scope.$digest();
       setTimeout(function () {
-        expect(element).to.contain('test');
-        scope.content = 'hello';
-        scope.$digest();
-        expect(scope.content).to.equal('hello');
+        expect(scope.content).to.equal('<p>hello</p>');
         expect(element).to.contain('hello');
         done();
       }, 0);
@@ -46,9 +48,10 @@ describe('CKEditor placeholder directive', function () {
 
   it('should hide placeholder when we focus', function (done) {
     scope.onReady = function () {
+      $timeout.flush();
+      expect(element).to.contain('test');
+      _.find(CKEDITOR.instances).fire('focus');
       setTimeout(function () {
-        expect(element).to.contain('test');
-        _.find(CKEDITOR.instances).fire('focus');
         expect(element).to.not.contain('test');
         done();
       }, 0);
@@ -61,10 +64,11 @@ describe('CKEditor placeholder directive', function () {
     scope.content = 'hello';
 
     scope.onReady = function () {
+      $timeout.flush();
+      expect(element).to.contain('hello');
+      scope.content = '';
+      scope.$digest();
       setTimeout(function () {
-        expect(element).to.contain('hello');
-        scope.content = '';
-        scope.$digest();
         _.find(CKEDITOR.instances).fire('blur');
         expect(element).to.contain('test');
         done();
