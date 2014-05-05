@@ -9,18 +9,13 @@
 
   angular
   .module('ckeditorPlaceholder', ['ckeditor'])
-  .directive('placeholder', ['$parse', placeholderDirective]);
-
-  // Create setImmediate function.
-  var setImmediate = window && window.setImmediate ? window.setImmediate : function (fn) {
-    setTimeout(fn, 0);
-  };
+  .directive('placeholder', ['$parse', '$timeout', placeholderDirective]);
 
   /**
    * Placeholder directive.
    */
 
-  function placeholderDirective($parse) {
+  function placeholderDirective($parse, $timeout) {
     return {
       restrict: 'A',
       require: ['?ckeditor'],
@@ -51,7 +46,7 @@
           });
 
           // Try to display placeholder.
-          setImmediate(show);
+          $timeout(show);
         });
 
         /**
