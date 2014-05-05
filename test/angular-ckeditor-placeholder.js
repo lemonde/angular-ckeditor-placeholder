@@ -77,4 +77,20 @@ describe('CKEditor placeholder directive', function () {
 
     var element = $compile('<div ckeditor placeholder="test" ng-model="content" ready="onReady()"></div>')(scope);
   });
+
+  it('should show with setData null', function (done) {
+    scope.onReady = function () {
+      $timeout.flush();
+      expect(element).to.contain('test');
+      scope.$digest();
+      setTimeout(function () {
+        _.find(CKEDITOR.instances).setData(null);
+        $timeout.flush();
+        expect(element).to.contain('test');
+        done();
+      }, 0);
+    };
+
+    var element = $compile('<div ckeditor placeholder="test" ng-model="content" ready="onReady()"></div>')(scope);
+  });
 });
