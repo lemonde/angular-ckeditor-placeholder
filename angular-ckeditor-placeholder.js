@@ -1,4 +1,4 @@
-/*! Angular CKEditor placeholder v0.1.0 | (c) 2014 Le Monde | License MIT */
+/*! Angular CKEditor placeholder v0.1.1 | (c) 2014 Le Monde | License MIT */
 
 (function (root, factory) {
   // AMD
