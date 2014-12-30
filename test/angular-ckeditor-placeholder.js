@@ -27,7 +27,7 @@ describe('CKEditor placeholder directive', function () {
       }, 0);
     };
 
-    var element = $compile('<div ckeditor placeholder="test" ng-model="content" ready="onReady()"></div>')(scope);
+    var element = $compile('<div ckeditor contenteditable="true" placeholder="test" ng-model="content" ready="onReady()"></div>')(scope);
   });
 
   it('should hide placeholder when we set data', function (done) {
@@ -37,13 +37,15 @@ describe('CKEditor placeholder directive', function () {
       scope.content = 'hello';
       scope.$digest();
       setTimeout(function () {
-        expect(scope.content).to.equal('<p>hello</p>');
+        // NOTE : we have to trim CK model since CK adds \n and blanks to do formatting
+        // cf. http://dev.ckeditor.com/ticket/3260
+        expect(_.str.trim(scope.content)).to.equal('<p>hello</p>');
         expect(element).to.contain('hello');
         done();
       }, 0);
     };
 
-    var element = $compile('<div ckeditor placeholder="test" ng-model="content" ready="onReady()"></div>')(scope);
+    var element = $compile('<div ckeditor contenteditable="true" placeholder="test" ng-model="content" ready="onReady()"></div>')(scope);
   });
 
   it('should hide placeholder when we focus', function (done) {
@@ -57,7 +59,7 @@ describe('CKEditor placeholder directive', function () {
       }, 0);
     };
 
-    var element = $compile('<div ckeditor placeholder="test" ng-model="content" ready="onReady()"></div>')(scope);
+    var element = $compile('<div ckeditor contenteditable="true" placeholder="test" ng-model="content" ready="onReady()"></div>')(scope);
   });
 
   it('should show placeholder when blur', function (done) {
@@ -75,7 +77,7 @@ describe('CKEditor placeholder directive', function () {
       }, 0);
     };
 
-    var element = $compile('<div ckeditor placeholder="test" ng-model="content" ready="onReady()"></div>')(scope);
+    var element = $compile('<div ckeditor contenteditable="true" placeholder="test" ng-model="content" ready="onReady()"></div>')(scope);
   });
 
   it('should show with setData null', function (done) {
@@ -91,6 +93,6 @@ describe('CKEditor placeholder directive', function () {
       }, 0);
     };
 
-    var element = $compile('<div ckeditor placeholder="test" ng-model="content" ready="onReady()"></div>')(scope);
+    var element = $compile('<div ckeditor contenteditable="true" placeholder="test" ng-model="content" ready="onReady()"></div>')(scope);
   });
 });
