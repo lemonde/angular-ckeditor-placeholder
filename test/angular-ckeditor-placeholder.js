@@ -95,4 +95,9 @@ describe('CKEditor placeholder directive', function () {
 
     var element = $compile('<div ckeditor contenteditable="true" placeholder="test" ng-model="content" ready="onReady()"></div>')(scope);
   });
+
+  // cf. issue #3
+  // I couldn't manage to get a test on that. If someone has ideas...
+  it.skip('should not hinder focusing in contenteditable mode');
+
 });

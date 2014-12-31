@@ -47,6 +47,23 @@
             else if(isActive()) $timeout(show);
           });
 
+          // assist focusing when using contenteditable
+          // thank you http://stackoverflow.com/q/9093424/587407
+          element.focus(function() {
+            // focus assist is needed only after a placeholder disappeared.
+            // The placeholder, if any, is already removed at this stage.
+            // We know there was one when there is no text :
+            if (element.text()) return; // no placeholder was here, no need to assist focus.
+
+            if (document.createRange && window.getSelection) {
+              var range = document.createRange();
+              range.selectNodeContents(this);
+              var sel = window.getSelection();
+              sel.removeAllRanges();
+              sel.addRange(range);
+            }
+          });
+
           // Try to display placeholder.
           $timeout(show);
         });
@@ -82,7 +99,7 @@
          */
 
         function isActive() {
-          return ckeditor.instance.container.hasClass('placeholder');
+          return ckeditor.instance.container.hasClass(className);
         }
       }
     };

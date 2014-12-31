@@ -1,4 +1,6 @@
 
+v0.1.3
+- solved issue #3 : focus problem with contenteditable and a placeholder
 
 v0.1.2
 - plan a show after setData null when active. #2
