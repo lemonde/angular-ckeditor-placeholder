@@ -73,6 +73,9 @@
          */
 
         function show() {
+          // Otherwise, `ckeditor.instance.getData()` might throw an error.
+          window.getSelection().removeAllRanges();
+
           // If there is data, we don't show the placeholder.
           if (ckeditor.instance.getData()) return ;
 
