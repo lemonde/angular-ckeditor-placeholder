@@ -2,6 +2,7 @@
   "name": "angular-ckeditor-placeholder",
   "version": "0.1.4",
   "description": "Placeholder support for CKEditor angular directive.",
+  "main": "angular-ckeditor-placeholder.js",
   "scripts": {
     "install": "bower install",
     "test": "./node_modules/karma/bin/karma start --single-run"
